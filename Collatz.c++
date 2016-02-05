@@ -18,6 +18,10 @@
 
 using namespace std;
 
+#define CACHE
+
+static int cache[1000];
+
 // ------------
 // collatz_read
 // ------------
@@ -46,7 +50,13 @@ int collatz_eval (int i, int j) {
     do {
         int steps = 1;
         int n = i;
-        while (n != 1) {
+        while (n > 1) {
+            #ifdef CACHE
+                if (n < 1000 && cache[n] != 0) {
+                    steps += cache[n] - 1;
+                    break;
+                }
+            #endif
             if (n % 2 == 0) {
                 n /= 2;
             } else {
@@ -57,7 +67,12 @@ int collatz_eval (int i, int j) {
         if (steps > max) {
             max = steps;
         }
-    } while (i++ <= j);
+        #ifdef CACHE
+            if (i < 1000 && cache[i] == 0) {
+                cache[i] = steps;
+            }
+        #endif
+    } while (++i <= j);
     assert(max >= 1);
     return max;
 }
