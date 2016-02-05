@@ -17,10 +17,11 @@
 
 using namespace std;
 
+static int cache[1000];
+
 // ------------
 // collatz_read
 // ------------
-int[1000000] cache;
 pair<int, int> collatz_read (const string& s) {
     istringstream sin(s);
     int i;
@@ -35,7 +36,6 @@ pair<int, int> collatz_read (const string& s) {
 int collatz_eval (int i, int j) {
     assert(i >= 1 && i <= 1000000);
     assert(j >= 1 && j <= 1000000);
-    //printf("Input: %d, %d\n", i, j);
     if (i > j) {
         int tmp = i;
         i = j;
@@ -46,11 +46,13 @@ int collatz_eval (int i, int j) {
     do {
         int steps = 1;
         int n = i;
-        while (n != 1) {
-            if (cache[n] != 0) {
-                steps += cache[n] - 1;
-                break;
-            }
+        while (n > 1) {
+            #ifdef CACHE
+                if (n < 1000 && cache[n] != 0) {
+                    steps += cache[n] - 1;
+                    break;
+                }
+            #endif
             if (n % 2 == 0) {
                 n /= 2;
             } else {
@@ -58,13 +60,16 @@ int collatz_eval (int i, int j) {
             }
             steps++;
         }
-        cache[i] = steps;
         if (steps > max) {
             max = steps;
         }
-    } while (i++ <= j);
+        #ifdef CACHE
+            if (i < 1000 && cache[i] == 0) {
+                cache[i] = steps;
+            }
+        #endif
+    } while (++i <= j);
     assert(max >= 1);
-    //printf("\tOutput: %d\n", max);
     return max;
 }
 
