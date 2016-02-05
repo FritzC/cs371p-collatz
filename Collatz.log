@@ -1,0 +1,57 @@
+commit b440ddb35d549476a0e63b5e221d6885d5d9cd72
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Thu Feb 4 21:50:27 2016 -0600
+
+    Last commit?!
+
+commit 9c2619c141b73b5e7e8492814b2b5e6a1f70bfed
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Thu Feb 4 21:18:04 2016 -0600
+
+    Finished Cache and Ins/Outs
+
+commit 3411c0e76386507ae2c7fa074fd9995e22a7e836
+Merge: 9ed16b2 8fe975a
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 15:45:46 2016 -0600
+
+    Merge branch 'dev' of https://github.com/FritzC/cs371p-collatz. into dev
+
+commit 9ed16b2bd7f63af37bcc6ded47e92970f80a5f5a
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 15:44:41 2016 -0600
+
+    Trying to fix bug
+
+commit 8fe975abc765df77309ae5a5fab8b6def5134531
+Author: FritzC <ownerfritz@gmail.com>
+Date:   Wed Feb 3 15:37:28 2016 -0600
+
+    Delete .nfs000000000505f05d000000b3
+
+commit 73fbfa53a8364f9a55ed6b45ab91a1eb925af670
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 15:31:10 2016 -0600
+
+    Initial Algorithm finished
+
+commit e370f8f076c52167194ae4f9833c6cfaad717a2e
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 13:19:08 2016 -0600
+
+    Yet another attempt to fix Travis
+
+commit 93bced2ede8e8ff5b99f00118d53d16d9b7474de
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 13:16:15 2016 -0600
+
+    Still trying to fix Travis build
+
+commit 0f3ed9804d75a71efb996b00820c894a6f0f7e90
+Author: Frederick Copes <fritzc@cs.utexas.edu>
+Date:   Wed Feb 3 13:10:40 2016 -0600
+
+    Attempt to fix Travis build 2.0
+
+commit ff7db6cec94244828d94e95894548e34eddae455
+Author: Frederick Copes <fritzc@cs.utexas.edu>
