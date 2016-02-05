@@ -1,12 +1,13 @@
-// ----------------------------
-// projects/collatz/Collatz.c++
+// -------------------------------
+// projects/collatz/RunCollatz.c++
 // Copyright (C) 2016
 // Glenn P. Downing
-// ----------------------------
+// -------------------------------
 
 // --------
 // includes
 // --------
+
 
 #include <cassert>  // assert
 #include <iostream> // endl, istream, ostream
@@ -14,18 +15,12 @@
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
 
-#include "Collatz.h"
-
 using namespace std;
-
-#define CACHE
-
-static int cache[1000];
 
 // ------------
 // collatz_read
 // ------------
-
+int[1000000] cache;
 pair<int, int> collatz_read (const string& s) {
     istringstream sin(s);
     int i;
@@ -40,6 +35,7 @@ pair<int, int> collatz_read (const string& s) {
 int collatz_eval (int i, int j) {
     assert(i >= 1 && i <= 1000000);
     assert(j >= 1 && j <= 1000000);
+    //printf("Input: %d, %d\n", i, j);
     if (i > j) {
         int tmp = i;
         i = j;
@@ -50,13 +46,11 @@ int collatz_eval (int i, int j) {
     do {
         int steps = 1;
         int n = i;
-        while (n > 1) {
-            #ifdef CACHE
-                if (n < 1000 && cache[n] != 0) {
-                    steps += cache[n] - 1;
-                    break;
-                }
-            #endif
+        while (n != 1) {
+            if (cache[n] != 0) {
+                steps += cache[n] - 1;
+                break;
+            }
             if (n % 2 == 0) {
                 n /= 2;
             } else {
@@ -64,16 +58,13 @@ int collatz_eval (int i, int j) {
             }
             steps++;
         }
+        cache[i] = steps;
         if (steps > max) {
             max = steps;
         }
-        #ifdef CACHE
-            if (i < 1000 && cache[i] == 0) {
-                cache[i] = steps;
-            }
-        #endif
-    } while (++i <= j);
+    } while (i++ <= j);
     assert(max >= 1);
+    //printf("\tOutput: %d\n", max);
     return max;
 }
 
@@ -96,3 +87,11 @@ void collatz_solve (istream& r, ostream& w) {
         const int            j = p.second;
         const int            v = collatz_eval(i, j);
         collatz_print(w, i, j, v);}}
+
+// ----
+// main
+// ----
+
+int main () {
+    collatz_solve(cin, cout);
+    return 0;}
